@@ -8,6 +8,7 @@ package Hesco.Views;
 import Hesco.Connection.DatabaseConnection;
 import Hesco.MainHesco;
 import Hesco.Pasien;
+import Hesco.Petugas;
 import java.awt.Color;
 import java.sql.Statement;
 import javax.swing.JButton;
@@ -484,34 +485,8 @@ public class v_ManageData extends javax.swing.JDialog {
         
     }
     public void SimpanData(){
-        MainHesco.pasien = new Pasien();
-        MainHesco.pasien.setNIS(txtNIS.getText());
-        MainHesco.pasien.setNama(txtNama.getText());
-        MainHesco.pasien.setKelas(txtKelas.getText());
-        MainHesco.pasien.setJenkel(cmbJenkel.getSelectedItem().toString());
-        MainHesco.pasien.setKet_sakit(txtSakit.getText());
-        MainHesco.pasien.setJenis_obat(txtJenis.getText());
-        MainHesco.pasien.setTanggal(txtTanggal.getText());
-        
-        try{
-            Statement stmt = koneksi.createStatement();
-            String query = "INSERT INTO pasien(nis, nama, kelas, jenkel, ket_sakit, jenis_obat, tanggal)" +
-                            "VALUES('" + MainHesco.pasien.getNIS() + "','" + MainHesco.pasien.getNama() + "','" + MainHesco.pasien.getKelas()
-                    + "','" + MainHesco.pasien.getJenkel() + "','" + MainHesco.pasien.getKet_sakit() + "','" + MainHesco.pasien.getJenis_obat() + "','" 
-                    + MainHesco.pasien.getTanggal() + "')";
-            System.out.println(query);
-            int berhasil = stmt.executeUpdate(query);
-            if(berhasil == 1){
-                dispose();
-                JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
-            }else{
-                JOptionPane.showMessageDialog(null, "Data gagal dimasukan");
-            }
-            stmt.close();
-        }catch(SQLException ex){
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan", "Error",JOptionPane.ERROR_MESSAGE);
-        }
+    Petugas petugas = new Petugas();
+    petugas.mengisiData(txtNIS, txtNama, txtKelas, cmbJenkel, txtSakit, txtJenis, txtTanggal);
     }
     
     void showData(String NIS){

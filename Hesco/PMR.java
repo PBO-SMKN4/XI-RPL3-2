@@ -10,6 +10,6 @@ package Hesco;
  * @author ASUS X455L
  */
 public interface PMR {
-    public void perawat();
+    public void mengisiData(javax.swing.JTextField txtKdObat, javax.swing.JTextField txtMerk, javax.swing.JTextField txtEXP, javax.swing.JComboBox cmbJenis, javax.swing.JTextField txtStok, javax.swing.JTextField txtKet);
 
 }

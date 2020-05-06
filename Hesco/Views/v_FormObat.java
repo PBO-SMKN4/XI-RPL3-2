@@ -8,6 +8,7 @@ package Hesco.Views;
 
 import Hesco.Connection.DatabaseConnection;
 import Hesco.MainHesco;
+import Hesco.Petugas;
 import java.awt.Color;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -500,30 +501,8 @@ public class v_FormObat extends javax.swing.JDialog {
     }
     
     public void simpanData(){
-        MainHesco.obat.setKd_obat(txtKdObat.getText());
-        MainHesco.obat.setMerk(txtMerk.getText());
-        MainHesco.obat.setTanggal_kadaluarsa(txtEXP.getText());
-        MainHesco.obat.setJenis_obat(cmbJenis.getSelectedItem().toString());
-        MainHesco.obat.setKd_obat(txtKdObat.getText());
-        MainHesco.obat.setStok_obat(txtStok.getText());
-        MainHesco.obat.setKet_obat(txtKet.getText());
-        
-        try{
-            Statement stmt = koneksi.createStatement();
-            String query = "INSERT INTO obat(kd_obat, merk, tanggal_kadaluarsa, jenis_obat, stok_obat, ket_obat)" +
-                    " VALUES('" + MainHesco.obat.getKd_obat() + "','" + MainHesco.obat.getMerk() + "','" + MainHesco.obat.getTanggal_kadaluarsa()
-                    + "','" + MainHesco.obat.getJenis_obat() + "','" + MainHesco.obat.getStok_obat() + "','" + MainHesco.obat.getKet_obat() + "')";
-            System.out.println(query);
-            int berhasil = stmt.executeUpdate(query);
-            if(berhasil == 1){
-                JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
-            }else{
-                JOptionPane.showMessageDialog(null, "Data gagal ditambahkan");
-            }
-        }catch(SQLException ex){
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        Petugas petugas = new Petugas();
+        petugas.mengisiData(txtKdObat, txtMerk, txtEXP, cmbJenis, txtStok, txtKet);
     }
     
     public void showData(String kode){
