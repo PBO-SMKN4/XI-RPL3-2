@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
@@ -176,9 +177,19 @@ public class ManageLoginData extends javax.swing.JDialog {
         jLabel7.setText("Password");
 
         btnSave.setBackground(new java.awt.Color(255, 255, 255));
-        btnSave.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_save_25px_1.png"))); // NOI18N
         btnSave.setText("SAVE");
         btnSave.setBorder(null);
+        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSaveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSaveMouseExited(evt);
+            }
+        });
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -224,10 +235,12 @@ public class ManageLoginData extends javax.swing.JDialog {
         );
 
         btnKembali.setBackground(new java.awt.Color(51, 92, 160));
-        btnKembali.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        btnKembali.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
         btnKembali.setForeground(new java.awt.Color(255, 255, 255));
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_back_25px.png"))); // NOI18N
         btnKembali.setText("Kembali");
         btnKembali.setBorder(null);
+        btnKembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKembaliActionPerformed(evt);
@@ -258,9 +271,9 @@ public class ManageLoginData extends javax.swing.JDialog {
                     .addComponent(Exit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signupLayout.createSequentialGroup()
                 .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(180, 180, 180))
+                .addGap(138, 138, 138)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         signupLayout.setVerticalGroup(
             signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,11 +387,27 @@ public class ManageLoginData extends javax.swing.JDialog {
         vlog.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnKembaliActionPerformed
+
+    private void btnSaveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseEntered
+        // TODO add your handling code here:
+        setButtonColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseEntered
+
+    private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
+        // TODO add your handling code here:
+        resetButtonColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseExited
     void setColor(JPanel panel){
         panel.setBackground(new Color(255, 0, 51));
     }
     void resetColor(JPanel panel){
         panel.setBackground(new Color(255, 255, 255));
+    }
+    void setButtonColor(JButton button){
+        button.setBackground(new Color(240, 240, 240));
+    }
+    void resetButtonColor(JButton button){
+        button.setBackground(new Color(255, 255, 255));
     }
     
     public void SimpanData(){
@@ -388,18 +417,27 @@ public class ManageLoginData extends javax.swing.JDialog {
         MainHesco.petugas.setPassword(txtPassword.getText());
         MainHesco.petugas.setNo_hp(txtNo_Hp.getText());
         
-        try{
-            Statement stmt = koneksi.createStatement();
-            String query = "INSERT INTO petugas(username, nama, kelas, password, no_hp)" +
+        String query = "INSERT INTO petugas(username, nama, kelas, password, no_hp)" +
                             "VALUES('" + MainHesco.petugas.getUsername() + "','" + MainHesco.petugas.getNama() + "','" 
                     + MainHesco.petugas.getKelas() + "','" + MainHesco.petugas.getPassword() + "','" + MainHesco.petugas.getNo_hp() + "')";
+        
+        try{
+            Statement stmt = koneksi.createStatement();
+            
             System.out.println(query);
             int berhasil = stmt.executeUpdate(query);
-            if(berhasil == 1){
+            
+            // VALIDASI FORM KOSONG
+            if(txtUsername.getText().equals("") || txtNama.getText().equals("") || txtKelas.getText().equals("") || txtPassword.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Isi Data dengan benar!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                return;
+            // VALIDASI FORM BERHASIL
+            }else if(berhasil == 1){
                 JOptionPane.showMessageDialog(null, "Daftar baru berhasil");
             }else{
                 JOptionPane.showMessageDialog(null, "Gagal melakukan daftar baru");
             }
+            
         }catch(SQLException ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Terjadi kesahalah pada Database");

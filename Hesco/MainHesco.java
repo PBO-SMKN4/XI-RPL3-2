@@ -5,8 +5,9 @@
  */
 package Hesco;
 
+import Hesco.Connection.DatabaseConnection;
 import Hesco.Views.v_Login;
-
+import java.sql.Connection;
 /**
  *
  * @author ASUS X455L
@@ -15,6 +16,7 @@ public class MainHesco {
     public static WargaSekolah pasien = new Pasien();
     public static WargaSekolah petugas = new Petugas();
     public static Obat obat = new Obat();
+    
     /**
      * @param args the command line arguments
      */

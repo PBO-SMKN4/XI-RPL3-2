@@ -79,7 +79,7 @@ public class v_Login extends javax.swing.JFrame {
         PanelLogo.setBackground(new java.awt.Color(51, 86, 160));
         PanelLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/Logo (2).png"))); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/hesco1blank.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("OCR-B 10 BT", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,11 +90,14 @@ public class v_Login extends javax.swing.JFrame {
         PanelLogoLayout.setHorizontalGroup(
             PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLogoLayout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addGroup(PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addGroup(PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelLogoLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(Logo))
+                    .addGroup(PanelLogoLayout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         PanelLogoLayout.setVerticalGroup(
             PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,8 +105,8 @@ public class v_Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152))
+                .addComponent(Logo)
+                .addGap(106, 106, 106))
         );
 
         PanelSignin.setBackground(new java.awt.Color(255, 255, 255));
@@ -152,7 +155,8 @@ public class v_Login extends javax.swing.JFrame {
         jLabel4.setText("Password");
 
         btnLogin.setBackground(new java.awt.Color(255, 255, 255));
-        btnLogin.setFont(new java.awt.Font("OCR-B 10 BT", 1, 18)); // NOI18N
+        btnLogin.setFont(new java.awt.Font("OCR-B 10 BT", 3, 18)); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_login_25px.png"))); // NOI18N
         btnLogin.setText("LOGIN");
         btnLogin.setBorder(null);
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -171,7 +175,8 @@ public class v_Login extends javax.swing.JFrame {
         });
 
         btnSignup.setBackground(new java.awt.Color(255, 255, 255));
-        btnSignup.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        btnSignup.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        btnSignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_registration_25px.png"))); // NOI18N
         btnSignup.setText("Sign - up");
         btnSignup.setBorder(null);
         btnSignup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -495,9 +500,6 @@ public class v_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;

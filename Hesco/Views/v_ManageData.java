@@ -59,9 +59,9 @@ public class v_ManageData extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         txtNama = new javax.swing.JTextField();
         txtKelas = new javax.swing.JTextField();
-        txtJenis = new javax.swing.JTextField();
-        txtSakit = new javax.swing.JTextField();
         txtTanggal = new javax.swing.JTextField();
+        txtSakit = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         txtNIS = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -151,11 +151,12 @@ public class v_ManageData extends javax.swing.JDialog {
         MenuPane.setLayout(MenuPaneLayout);
         MenuPaneLayout.setHorizontalGroup(
             MenuPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPaneLayout.createSequentialGroup()
-                .addGap(0, 153, Short.MAX_VALUE)
-                .addGroup(MenuPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(MenuPaneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPaneLayout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         MenuPaneLayout.setVerticalGroup(
             MenuPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,12 +186,13 @@ public class v_ManageData extends javax.swing.JDialog {
 
         jLabel8.setText("Ket. sakit");
 
-        jLabel9.setText("Jenis obat");
+        jLabel9.setText("Tanggal");
 
-        jLabel10.setText("Tanggal");
+        jLabel10.setText("Email sekolah");
 
         btnKembali.setBackground(new java.awt.Color(255, 255, 255));
-        btnKembali.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        btnKembali.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_back_25px_1.png"))); // NOI18N
         btnKembali.setText("Kembali");
         btnKembali.setBorder(null);
         btnKembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -247,8 +249,9 @@ public class v_ManageData extends javax.swing.JDialog {
         );
 
         btnSave.setBackground(new java.awt.Color(51, 92, 160));
-        btnSave.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_save_25px_2.png"))); // NOI18N
         btnSave.setText("SAVE");
         btnSave.setBorder(null);
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -258,9 +261,10 @@ public class v_ManageData extends javax.swing.JDialog {
             }
         });
 
+        cmbJenkel.setEditable(true);
         cmbJenkel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         cmbJenkel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[ JENKEL ]", "L", "P" }));
-        cmbJenkel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cmbJenkel.setBorder(null);
         cmbJenkel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -280,11 +284,11 @@ public class v_ManageData extends javax.swing.JDialog {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNIS, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(txtTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(jLabel8)
                             .addComponent(txtSakit, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(jLabel9)
-                            .addComponent(txtJenis, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(txtTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(cmbJenkel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(97, 97, 97))
                     .addComponent(Exit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -320,11 +324,11 @@ public class v_ManageData extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
@@ -485,8 +489,8 @@ public class v_ManageData extends javax.swing.JDialog {
         
     }
     public void SimpanData(){
-    Petugas petugas = new Petugas();
-    petugas.mengisiData(txtNIS, txtNama, txtKelas, cmbJenkel, txtSakit, txtJenis, txtTanggal);
+        Petugas petugas = new Petugas();
+        petugas.mengisiData(txtNIS, txtNama, txtKelas, cmbJenkel, txtSakit, txtTanggal, txtEmail);
     }
     
     void showData(String NIS){
@@ -499,9 +503,10 @@ public class v_ManageData extends javax.swing.JDialog {
             txtNama.setText(rs.getString("nama"));
             txtKelas.setText(rs.getString("kelas"));
             cmbJenkel.setSelectedItem(rs.getString("jenkel"));
+//            txtJenis.setText(rs.getString("jenis_obat"));
             txtSakit.setText(rs.getString("ket_sakit"));
-            txtJenis.setText(rs.getString("jenis_obat"));
             txtTanggal.setText(rs.getString("tanggal"));
+            txtEmail.setText(rs.getString("email"));
             
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -510,32 +515,8 @@ public class v_ManageData extends javax.swing.JDialog {
     }
     
     public void EditData(){
-        MainHesco.pasien.setNIS(txtNIS.getText());
-        MainHesco.pasien.setNama(txtNama.getText());
-        MainHesco.pasien.setKelas(txtKelas.getText());
-        MainHesco.pasien.setJenkel(cmbJenkel.getSelectedItem().toString());
-        MainHesco.pasien.setKet_sakit(txtSakit.getText());
-        MainHesco.pasien.setJenis_obat(txtJenis.getText());
-        MainHesco.pasien.setTanggal(txtTanggal.getText());
-        
-        try{
-            Statement stmt = koneksi.createStatement();
-            String query = "UPDATE pasien SET nama ='" + MainHesco.pasien.getNama() + "'," 
-                    + "kelas = '" + MainHesco.pasien.getKelas() + "'," + "jenkel = '" + MainHesco.pasien.getJenkel() + "'," 
-                    + "ket_sakit = '" + MainHesco.pasien.getKet_sakit() + "'," 
-                    + "jenis_obat = '" + MainHesco.pasien.getJenis_obat() + "'," 
-                    + "tanggal = '" + MainHesco.pasien.getTanggal() + "' WHERE nis ='" + MainHesco.pasien.getNIS() + "'";
-            System.out.println(query);
-            int berhasil = stmt.executeUpdate(query);
-            if(berhasil == 1){
-                JOptionPane.showMessageDialog(null, "Data berhasil diubah");
-            }else{
-                JOptionPane.showMessageDialog(null, "Data gagal diubah");
-            }
-        }catch(SQLException ex){
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+      Petugas petugas = new Petugas();
+      petugas.mengeditData(txtNIS, txtNama, txtKelas, cmbJenkel, txtSakit, txtTanggal, txtEmail);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Exit;
@@ -559,7 +540,7 @@ public class v_ManageData extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField txtJenis;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtKelas;
     private javax.swing.JTextField txtNIS;
     private javax.swing.JTextField txtNama;

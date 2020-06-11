@@ -98,7 +98,7 @@ public class v_home extends javax.swing.JFrame {
 
         MenuPanel.setBackground(new java.awt.Color(51, 92, 160));
 
-        LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/Logo Hesco.png"))); // NOI18N
+        LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/hesco2blank.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,9 +246,11 @@ public class v_home extends javax.swing.JFrame {
         );
 
         ScrollDatsis.setBackground(new java.awt.Color(255, 255, 255));
-        ScrollDatsis.setBorder(null);
+        ScrollDatsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ScrollDatsis.setColumnHeaderView(null);
         ScrollDatsis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ScrollDatsis.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        ScrollDatsis.setRowHeaderView(null);
 
         TabelSiswa.setAutoCreateRowSorter(true);
         TabelSiswa.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -263,9 +265,10 @@ public class v_home extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TabelSiswa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TabelSiswa.setGridColor(new java.awt.Color(255, 255, 255));
         TabelSiswa.setRowHeight(24);
-        TabelSiswa.setSelectionBackground(new java.awt.Color(128, 255, 204));
+        TabelSiswa.setSelectionBackground(new java.awt.Color(250, 51, 51));
         TabelSiswa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TabelSiswa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -273,6 +276,7 @@ public class v_home extends javax.swing.JFrame {
             }
         });
         ScrollDatsis.setViewportView(TabelSiswa);
+        TabelSiswa.getAccessibleContext().setAccessibleParent(ScrollDatsis);
 
         Exit.setBackground(new java.awt.Color(255, 255, 255));
         Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -468,7 +472,7 @@ public class v_home extends javax.swing.JFrame {
         );
 
         ScrollDaobat.setBackground(new java.awt.Color(255, 255, 255));
-        ScrollDaobat.setBorder(null);
+        ScrollDaobat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ScrollDaobat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ScrollDaobat.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
@@ -488,7 +492,7 @@ public class v_home extends javax.swing.JFrame {
         TabelObat.setGridColor(new java.awt.Color(255, 255, 255));
         TabelObat.setRowHeight(24);
         TabelObat.setRowSorter(null);
-        TabelObat.setSelectionBackground(new java.awt.Color(51, 86, 160));
+        TabelObat.setSelectionBackground(new java.awt.Color(255, 25, 106));
         TabelObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabelObatMouseClicked(evt);
@@ -845,11 +849,6 @@ int baris;
         setColor(Exit);
     }//GEN-LAST:event_ExitMouseEntered
 
-    private void TabelSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelSiswaMouseClicked
-        // TODO add your handling code here:
-        baris = TabelSiswa.getSelectedRow();
-    }//GEN-LAST:event_TabelSiswaMouseClicked
-
     private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
         // TODO add your handling code here:
         String delete = TabelObat.getValueAt(baris, 1).toString();
@@ -970,6 +969,11 @@ int baris;
         // TODO add your handling code here:
         baris = TabelObat.getSelectedRow();
     }//GEN-LAST:event_TabelObatMouseClicked
+
+    private void TabelSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelSiswaMouseClicked
+        // TODO add your handling code here:
+        baris = TabelSiswa.getSelectedRow();
+    }//GEN-LAST:event_TabelSiswaMouseClicked
     void setColor(JPanel panel){
         panel.setBackground(new Color(255, 0, 51));
     }
@@ -1024,12 +1028,15 @@ int baris;
     }
     DefaultTableModel dtm;
     public void showData(){
-        String[] kolom = {"No.", "NIS", "Nama", "Kelas", "Jenkel", "Ket. Sakit", "Jenis obat", "Tanggal"};
+        String[] kolom = {"No.", "NIS", "Nama", "Kelas", "Jenkel", "Ket. Sakit", "Tanggal", "email"};
         
         dtm = new DefaultTableModel(null, kolom);
         MainHesco.pasien = new Pasien();
         try{
             Statement stmt = koneksi.createStatement();
+//            String query = "SELECT pasien.nis, pasien.nama, pasien.kelas, pasien.jenkel, pasien.ket_sakit, pasien.jenis_obat, obat.merk, petugas.username, pasien.tanggal FROM pasien "
+//                    + "INNER JOIN obat ON (pasien.kd_obat = obat.kd_obat) INNER JOIN petugas ON (pasien.username = petugas.username)";
+            
             String query = "SELECT * FROM pasien";
             ResultSet rs = stmt.executeQuery(query);
             int no = 1;
@@ -1039,12 +1046,15 @@ int baris;
                 MainHesco.pasien.setKelas(rs.getString("kelas"));
                 MainHesco.pasien.setJenkel(rs.getString("jenkel"));
                 MainHesco.pasien.setKet_sakit(rs.getString("ket_sakit"));
-                MainHesco.pasien.setJenis_obat(rs.getString("jenis_obat")); 
+//                MainHesco.pasien.setJenis_obat(rs.getString("jenis_obat"));
+//                MainHesco.obat.setMerk(rs.getString("merk"));
+//                MainHesco.petugas.setUsername(rs.getString("username"));
                 MainHesco.pasien.setTanggal(rs.getString("tanggal"));
+                MainHesco.pasien.setEmail(rs.getString("email"));
                 
                 
                 dtm.addRow(new String[] {no+"", MainHesco.pasien.getNIS(), MainHesco.pasien.getNama(),MainHesco.pasien.getKelas(),
-                    MainHesco.pasien.getJenkel(),MainHesco.pasien.getKet_sakit(), MainHesco.pasien.getJenis_obat(), MainHesco.pasien.getTanggal()});
+                    MainHesco.pasien.getJenkel(),MainHesco.pasien.getKet_sakit(), MainHesco.pasien.getTanggal(), MainHesco.pasien.getEmail()});
                 no++;
             }
         }catch(SQLException ex){

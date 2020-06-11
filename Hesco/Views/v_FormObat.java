@@ -199,8 +199,9 @@ public class v_FormObat extends javax.swing.JDialog {
         jLabel9.setText("Stok Obat");
 
         btnKembali.setBackground(new java.awt.Color(51, 92, 160));
-        btnKembali.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        btnKembali.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
         btnKembali.setForeground(new java.awt.Color(255, 255, 255));
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_back_25px.png"))); // NOI18N
         btnKembali.setText("Kembali");
         btnKembali.setBorder(null);
         btnKembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -211,7 +212,8 @@ public class v_FormObat extends javax.swing.JDialog {
         });
 
         btnSave.setBackground(new java.awt.Color(255, 255, 255));
-        btnSave.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hesco/Images/icons8_save_25px_1.png"))); // NOI18N
         btnSave.setText("SAVE");
         btnSave.setBorder(null);
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -523,32 +525,8 @@ public class v_FormObat extends javax.swing.JDialog {
         }
     }
     public void EditData(){
-        MainHesco.obat.setKd_obat(txtKdObat.getText());
-        MainHesco.obat.setMerk(txtMerk.getText());
-        MainHesco.obat.setTanggal_kadaluarsa(txtEXP.getText());
-        MainHesco.obat.setJenis_obat(cmbJenis.getSelectedItem().toString());
-        MainHesco.obat.setKd_obat(txtKdObat.getText());
-        MainHesco.obat.setStok_obat(txtStok.getText());
-        MainHesco.obat.setKet_obat(txtKet.getText());
-        
-        try{
-            Statement stmt = koneksi.createStatement();
-            String query = "UPDATE obat SET merk = '" + MainHesco.obat.getMerk() + "'," + "tanggal_kadaluarsa = '" 
-                    + MainHesco.obat.getTanggal_kadaluarsa() + "'," 
-                    + "jenis_obat = '" + MainHesco.obat.getJenis_obat() 
-                    + "'," + "stok_obat = '" + MainHesco.obat.getStok_obat() + "'," 
-                    + "ket_obat = '" + MainHesco.obat.getKet_obat() + "' WHERE kd_obat ='" + MainHesco.obat.getKd_obat() + "'";
-            System.out.println(query);
-            int berhasil = stmt.executeUpdate(query);
-            if(berhasil == 1){
-                JOptionPane.showMessageDialog(null, "Data berhasil diubah");
-            }else{
-                JOptionPane.showMessageDialog(null, "Data gagal diubah");
-            }
-        }catch(SQLException ex){
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+       Petugas petugas = new Petugas();
+       petugas.mengeditData(txtKdObat, txtMerk, txtEXP, cmbJenis, txtStok, txtKet);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Exit;

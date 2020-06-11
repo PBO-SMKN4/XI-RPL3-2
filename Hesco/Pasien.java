@@ -14,8 +14,9 @@ public class Pasien extends WargaSekolah{
    private String NIS;
    private String Jenkel;
    private String ket_sakit;
-   private String Jenis_obat;
+//   private String Jenis_obat;
    private String Tanggal;
+   private String Email;
    
     /**
      * @return the NIS
@@ -100,18 +101,18 @@ public class Pasien extends WargaSekolah{
     /**
      * @return the Jenis_obat
      */
-   @Override
-    public String getJenis_obat() {
-        return Jenis_obat;
-    }
-
-    /**
-     * @param Jenis_obat the Jenis_obat to set
-     */
-   @Override
-    public void setJenis_obat(String Jenis_obat) {
-        this.Jenis_obat = Jenis_obat;
-    }
+//   @Override
+//    public String getJenis_obat() {
+//        return Jenis_obat;
+//    }
+//
+//    /**
+//     * @param Jenis_obat the Jenis_obat to set
+//     */
+//   @Override
+//    public void setJenis_obat(String Jenis_obat) {
+//        this.Jenis_obat = Jenis_obat;
+//    }
 
     /**
      * @return the Tanggal
@@ -127,5 +128,19 @@ public class Pasien extends WargaSekolah{
    @Override
     public void setTanggal(String Tanggal) {
         this.Tanggal = Tanggal;
+    }
+
+    /**
+     * @return the Email
+     */
+    public String getEmail() {
+        return Email;
+    }
+
+    /**
+     * @param Email the Email to set
+     */
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 }
